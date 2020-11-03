@@ -26,8 +26,9 @@ public class SphericalLawOfCosinesImplTest {
     void shouldThrowExceptionWhenGettingDistanceAndStartingCoordinateIsNotSet() {
         SphericalLawOfCosinesImpl sphericalLawOfCosines = new SphericalLawOfCosinesImpl();
 
-        Assertions.assertThrows(StartingCoordinateNotSetException.class, () -> {
-            sphericalLawOfCosines.getDistanceFromStartingCoordinateToDestinationCoordinate(destinationCoordinate);
-        });
+        Assertions.assertThrows(
+                StartingCoordinateNotSetException.class,
+                () -> sphericalLawOfCosines.getDistanceFromStartingCoordinateToDestinationCoordinate(destinationCoordinate)
+        );
     }
 }
