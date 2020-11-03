@@ -6,7 +6,7 @@ import static java.lang.Math.cos;
 
 /**
  * Implementation of the Spherical Law of Cosines formula.
- * It can be used to compute distances on the Earth.
+ * It can be used to compute distances between two points on the surface of the Earth.
  * @see <a href="https://en.wikipedia.org/wiki/Spherical_law_of_cosines">Spherical Law of cosines</a>
  */
 public class SphericalLawOfCosinesImpl {
