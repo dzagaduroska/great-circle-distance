@@ -3,5 +3,5 @@ package com.dzagaduroska.great_circle_distance.geo;
 /**
  * Exception thrown when the starting coordinate has not been set.
  */
-public class StartingCoordinateHasNotSetException extends RuntimeException {
+public class StartingCoordinateNotSetException extends RuntimeException {
 }
