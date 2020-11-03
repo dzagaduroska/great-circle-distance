@@ -28,17 +28,17 @@ public class SphericalLawOfCosinesImpl {
      * @param destinationCoordinate the destination coordinate
      * @return the distance between the coordinates
      */
-    public double getDistanceFromStartingCoordinateToDestinationCoordinate(GeoCoordinate destinationCoordinate)
+    public Double getDistanceFromStartingCoordinateToDestinationCoordinate(GeoCoordinate destinationCoordinate)
             throws StartingCoordinateNotSetException {
         if (startingCoordinate == null) {
             throw new StartingCoordinateNotSetException();
         }
-        double latitudeOfStartCoordinateInRadians = startingCoordinate.latitude.toRadians();
-        double latitudeOfDestinationCoordinateInRadians = destinationCoordinate.latitude.toRadians();
+        Double latitudeOfStartCoordinateInRadians = startingCoordinate.latitude.toRadians();
+        Double latitudeOfDestinationCoordinateInRadians = destinationCoordinate.latitude.toRadians();
 
-        double deltaLambda = Math.abs(destinationCoordinate.longitude.toRadians() - startingCoordinate.longitude.toRadians());
+        Double deltaLambda = Math.abs(destinationCoordinate.longitude.toRadians() - startingCoordinate.longitude.toRadians());
 
-        double angle = acos(
+        Double angle = acos(
                 sin(latitudeOfStartCoordinateInRadians) * sin(latitudeOfDestinationCoordinateInRadians) +
                         cos(latitudeOfStartCoordinateInRadians) * cos(latitudeOfDestinationCoordinateInRadians) * cos(deltaLambda)
         );
