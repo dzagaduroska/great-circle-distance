@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Geographical location defined by the latitude and the longitude.
+ * Geographical coordinate defined by the latitude and the longitude.
  */
 @Getter
 @Setter
