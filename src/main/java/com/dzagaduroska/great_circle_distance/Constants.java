@@ -7,4 +7,5 @@ public class Constants {
     static final double maxDistanceFromTheDublinOffice = 100;
 
     static final String customerPrintFormat = "%s %s\n";
+    static final String customersFileClasspath =  "/customers.txt";
 }

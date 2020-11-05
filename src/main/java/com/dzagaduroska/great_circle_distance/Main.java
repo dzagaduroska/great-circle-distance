@@ -1,33 +1,39 @@
 package com.dzagaduroska.great_circle_distance;
 
-import com.dzagaduroska.great_circle_distance.geo.GeoCoordinate;
-import com.dzagaduroska.great_circle_distance.geo.Latitude;
-import com.dzagaduroska.great_circle_distance.geo.Longitude;
+import com.dzagaduroska.great_circle_distance.file.FileUtils;
+import com.dzagaduroska.great_circle_distance.mapper.JsonNodeToCustomerMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.dzagaduroska.great_circle_distance.Constants.maxDistanceFromTheDublinOffice;
-import static com.dzagaduroska.great_circle_distance.Constants.customerPrintFormat;
+import static com.dzagaduroska.great_circle_distance.Constants.*;
 
 public class Main {
 
-    public static void main(String[] args) {
-
-        ArrayList<Customer> customersExample = new ArrayList<>();
-        customersExample.add(new Customer(1, "Christina McArdle", new GeoCoordinate(new Latitude(52.986375), new Longitude( -6.043701))));
-        customersExample.add(new Customer(2, "Alice Cahill", new GeoCoordinate(new Latitude(51.92893), new Longitude(-10.27699))));
-        customersExample.add(new Customer(3, "Ian McArdle", new GeoCoordinate(new Latitude(51.8856167), new Longitude(-10.4240951))));
+    public static void main(String[] args) throws IOException {
+        ArrayList<Customer> customers = readCustomersFromFile();
 
         DublinOfficeDistanceSolution.setDublinOfficeAsStartingPoint();
-
         List<Customer> customersWithinGivenDistanceFromDublinOffice = DublinOfficeDistanceSolution
-                .getSortedCustomersWithinGivenDistanceFromDublinOffice(customersExample, maxDistanceFromTheDublinOffice);
+                .getSortedCustomersWithinGivenDistanceFromDublinOffice(customers, maxDistanceFromTheDublinOffice);
 
         printCustomers(customersWithinGivenDistanceFromDublinOffice);
     }
 
     private static void printCustomers(List<Customer> customerList) {
         customerList.forEach(customer -> System.out.printf(customerPrintFormat, customer.getId(), customer.getFullName()));
+    }
+
+    private static ArrayList<Customer> readCustomersFromFile() throws IOException {
+        ArrayNode arrayNode = FileUtils.readJsonContentFromFileOnClasspath(customersFileClasspath);
+        return mapToArrayOfCustomers(arrayNode);
+    }
+
+    private static ArrayList<Customer> mapToArrayOfCustomers(ArrayNode arrayNode) {
+        ArrayList<Customer> customers = new ArrayList<>();
+        arrayNode.forEach(n -> customers.add(JsonNodeToCustomerMapper.map(n)));
+        return  customers;
     }
 }

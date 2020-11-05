@@ -1,14 +1,12 @@
 package com.dzagaduroska.great_circle_distance.geo;
 
+import lombok.Data;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Longitude.
  */
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 public class Longitude {
     /**
