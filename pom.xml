@@ -6,7 +6,7 @@
 
     <groupId>com.dzagaduroska</groupId>
     <artifactId>great-circle-distance</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <lombok.version>1.18.12</lombok.version>
