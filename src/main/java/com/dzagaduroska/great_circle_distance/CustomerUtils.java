@@ -18,13 +18,13 @@ public class CustomerUtils {
     }
 
     static ArrayList<Customer> readCustomersFromFile() throws IOException {
-        ArrayNode arrayNode = FileUtils.readJsonContentFromFileOnClasspath(customersFileClasspath);
+        ArrayNode arrayNode = FileUtils.readJsonContentLineByLineFromTextFile(customersFileClasspath);
         return mapToArrayOfCustomers(arrayNode);
     }
 
     private static ArrayList<Customer> mapToArrayOfCustomers(ArrayNode arrayNode) {
         ArrayList<Customer> customers = new ArrayList<>();
-        arrayNode.forEach(n -> customers.add(JsonNodeToCustomerMapper.map(n)));
-        return  customers;
+        arrayNode.forEach(customerNode -> customers.add(JsonNodeToCustomerMapper.map(customerNode)));
+        return customers;
     }
 }

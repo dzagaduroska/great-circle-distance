@@ -9,9 +9,21 @@ import java.io.*;
 import static com.dzagaduroska.great_circle_distance.json.JsonNodeUtils.addToArrayNode;
 import static com.dzagaduroska.great_circle_distance.json.JsonNodeUtils.mapTextToJsonNode;
 
+/**
+ * Line by line buffered reader.
+ */
 public class LineByLineBufferedReader {
 
-    static ArrayNode readJsonContentAndMapToArrayNode(String filePath) throws IOException {
+    /**
+     * Reads content from a file on classpath and maps the content to array node.
+     * It reads the file line by line and maps the line into a json node.
+     * Lines that cannot be mapped into a json node are skipped.
+     *
+     * @param filePath the file path
+     * @return array node
+     * @throws IOException io exception
+     */
+    static ArrayNode readJsonContentFromClasspathAndMapToArrayNode(String filePath) throws IOException {
         ArrayNode arrayNode = JsonNodeUtils.createArrayNode();
 
         var fromClasspath = LineByLineBufferedReader.class;

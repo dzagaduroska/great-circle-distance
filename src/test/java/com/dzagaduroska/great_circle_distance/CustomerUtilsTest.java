@@ -1,7 +1,6 @@
 package com.dzagaduroska.great_circle_distance;
 
 import com.dzagaduroska.great_circle_distance.file.FileUtils;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -25,11 +24,11 @@ public class CustomerUtilsTest {
     void shouldReadCustomersFromFile() throws IOException {
         ArrayNode node = getArrayNodeContainingJsonNodeWithCustomerFields();
         MockedStatic<FileUtils> mockedStatic = Mockito.mockStatic(FileUtils.class);
-        mockedStatic.when( () -> FileUtils.readJsonContentFromFileOnClasspath(customersFileClasspath)).thenReturn(node);
+        mockedStatic.when( () -> FileUtils.readJsonContentLineByLineFromTextFile(customersFileClasspath)).thenReturn(node);
 
         ArrayList<Customer> customerArrayList = CustomerUtils.readCustomersFromFile();
 
-        mockedStatic.verify(() -> FileUtils.readJsonContentFromFileOnClasspath(customersFileClasspath));
+        mockedStatic.verify(() -> FileUtils.readJsonContentLineByLineFromTextFile(customersFileClasspath));
         Assertions.assertNotNull(customerArrayList);
     }
 

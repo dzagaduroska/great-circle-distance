@@ -33,10 +33,10 @@ public class SphericalLawOfCosinesImpl {
         if (startingCoordinate == null) {
             throw new StartingCoordinateNotSetException();
         }
-        Double latitudeOfStartCoordinateInRadians = startingCoordinate.latitude.toRadians();
-        Double latitudeOfDestinationCoordinateInRadians = destinationCoordinate.latitude.toRadians();
+        double latitudeOfStartCoordinateInRadians = startingCoordinate.latitude.toRadians();
+        double latitudeOfDestinationCoordinateInRadians = destinationCoordinate.latitude.toRadians();
 
-        Double deltaLambda = Math.abs(destinationCoordinate.longitude.toRadians() - startingCoordinate.longitude.toRadians());
+        double deltaLambda = Math.abs(destinationCoordinate.longitude.toRadians() - startingCoordinate.longitude.toRadians());
 
         Double angle = acos(
                 sin(latitudeOfStartCoordinateInRadians) * sin(latitudeOfDestinationCoordinateInRadians) +

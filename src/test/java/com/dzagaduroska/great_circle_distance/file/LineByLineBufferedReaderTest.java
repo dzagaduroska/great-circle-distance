@@ -13,7 +13,7 @@ public class LineByLineBufferedReaderTest {
 
     @Test
     public void shouldReadJsonContentAndMapToArrayNode() throws IOException {
-        ArrayNode node = LineByLineBufferedReader.readJsonContentAndMapToArrayNode("/customers.txt");
+        ArrayNode node = LineByLineBufferedReader.readJsonContentFromClasspathAndMapToArrayNode("/customers.txt");
         Assertions.assertNotNull(node);
     }
 }
