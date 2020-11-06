@@ -1,4 +1,4 @@
-package com.dzagaduroska.great_circle_distance;
+package com.dzagaduroska.great_circle_distance.geo;
 
 import com.dzagaduroska.great_circle_distance.geo.*;
 import org.junit.jupiter.api.Assertions;
