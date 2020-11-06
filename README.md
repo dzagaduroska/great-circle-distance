@@ -31,4 +31,5 @@ Navigate to the 'target' directory and run
 The list of customers matching the criteria will be printed in the console
 
 ### Tests
-To run the unit tests navigate to the root directory of the project and run `maven test`
+To run the unit tests navigate to the root directory of the project and run `maven test`.
+You can find the test coverage report in target/site/jacoco/index.html
