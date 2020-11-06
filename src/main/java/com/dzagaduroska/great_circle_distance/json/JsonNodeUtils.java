@@ -13,10 +13,10 @@ public class JsonNodeUtils {
         return objectMapper.createArrayNode();
     }
 
-    public static JsonNode mapStringToJsonNode(String line) {
+    public static JsonNode mapTextToJsonNode(String text) {
         JsonNode node = null;
         try {
-            node = objectMapper.readTree(line);
+            node = objectMapper.readTree(text);
         } catch (JsonProcessingException ex) {
             ex.printStackTrace();
         }

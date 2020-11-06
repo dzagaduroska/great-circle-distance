@@ -7,19 +7,21 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import java.io.*;
 
 import static com.dzagaduroska.great_circle_distance.json.JsonNodeUtils.addToArrayNode;
-import static com.dzagaduroska.great_circle_distance.json.JsonNodeUtils.mapStringToJsonNode;
+import static com.dzagaduroska.great_circle_distance.json.JsonNodeUtils.mapTextToJsonNode;
 
 public class LineByLineBufferedReader {
 
-     static ArrayNode readJsonContentAndMapToArrayNode(String filePath) throws IOException {
+    static ArrayNode readJsonContentAndMapToArrayNode(String filePath) throws IOException {
         ArrayNode arrayNode = JsonNodeUtils.createArrayNode();
 
-         InputStream inputStream = LineByLineBufferedReader.class.getResourceAsStream(filePath);
-         InputStreamReader fileReader = new InputStreamReader(inputStream);
+        var fromClasspath = LineByLineBufferedReader.class;
+
+        InputStream inputStream = fromClasspath.getResourceAsStream(filePath);
+        InputStreamReader fileReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(fileReader);
 
         reader.lines().forEachOrdered(line -> {
-            JsonNode node = mapStringToJsonNode(line);
+            JsonNode node = mapTextToJsonNode(line);
             addNodeToArrayNodeIfNotNull(node, arrayNode, line);
         });
 
