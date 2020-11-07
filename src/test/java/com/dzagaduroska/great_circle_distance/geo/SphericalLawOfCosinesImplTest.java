@@ -1,6 +1,6 @@
 package com.dzagaduroska.great_circle_distance.geo;
 
-import com.dzagaduroska.great_circle_distance.geo.*;
+import com.dzagaduroska.great_circle_distance.geo.exception.StartingCoordinateNotSetException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

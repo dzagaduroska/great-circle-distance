@@ -1,5 +1,7 @@
 package com.dzagaduroska.great_circle_distance.geo;
 
+import com.dzagaduroska.great_circle_distance.geo.exception.OutOfRangeLatitudeException;
+import com.dzagaduroska.great_circle_distance.geo.exception.OutOfRangeLongitudeException;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 
@@ -11,4 +13,9 @@ import lombok.AllArgsConstructor;
 public class GeoCoordinate {
     Latitude latitude;
     Longitude longitude;
+
+    public void validate() throws OutOfRangeLatitudeException, OutOfRangeLongitudeException {
+        latitude.validate();
+        longitude.validate();
+    }
 }

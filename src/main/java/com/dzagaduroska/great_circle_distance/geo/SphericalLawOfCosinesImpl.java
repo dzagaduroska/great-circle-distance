@@ -1,5 +1,7 @@
 package com.dzagaduroska.great_circle_distance.geo;
 
+import com.dzagaduroska.great_circle_distance.geo.exception.StartingCoordinateNotSetException;
+
 import static java.lang.Math.acos;
 import static java.lang.Math.sin;
 import static java.lang.Math.cos;

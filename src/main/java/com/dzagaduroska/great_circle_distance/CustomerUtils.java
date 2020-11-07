@@ -19,12 +19,21 @@ public class CustomerUtils {
 
     static ArrayList<Customer> readCustomersFromFile() throws IOException {
         ArrayNode arrayNode = FileUtils.readJsonContentLineByLineFromTextFile(customersFileClasspath);
-        return mapToArrayOfCustomers(arrayNode);
+        return mapToArrayOfValidCustomers(arrayNode);
     }
 
-    private static ArrayList<Customer> mapToArrayOfCustomers(ArrayNode arrayNode) {
+    private static ArrayList<Customer> mapToArrayOfValidCustomers(ArrayNode arrayNode) {
         ArrayList<Customer> customers = new ArrayList<>();
-        arrayNode.forEach(customerNode -> customers.add(JsonNodeToCustomerMapper.map(customerNode)));
+        arrayNode.forEach(customerNode -> {
+            try {
+                Customer customer = JsonNodeToCustomerMapper.map(customerNode);
+                customer.validate();
+                customers.add(customer);
+            } catch (InvalidCustomerDataException exception) {
+                System.out.println("Skipping invalid customer");
+                exception.printStackTrace();
+            }
+        });
         return customers;
     }
 }
