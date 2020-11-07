@@ -22,8 +22,8 @@ public class JsonNodeToCustomerMapper {
     }
 
     private static GeoCoordinate getGeoCoordinateFromNode(JsonNode node) {
-        double latitude = node.get(latitudeProperty).doubleValue();
-        double longitude = node.get(longitudeProperty).doubleValue();
+        double latitude = Double.parseDouble(node.get(latitudeProperty).textValue());
+        double longitude = Double.parseDouble(node.get(longitudeProperty).textValue());
         return new GeoCoordinate(new Latitude(latitude), new Longitude(longitude));
     }
 }
